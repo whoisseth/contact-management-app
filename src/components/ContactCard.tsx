@@ -7,7 +7,9 @@ import Button from "./Button";
 import { Contact } from "@/app/contact/store";
 import { cn } from "@/utility/cn";
 
-interface Props extends Contact {}
+interface Props extends Contact {
+  handleDelete: () => void;
+}
 
 export default function ContactCard(props: Props) {
   return (
@@ -28,7 +30,9 @@ export default function ContactCard(props: Props) {
       </h1>
       <div className="flex gap-2">
         <EditContact_Modal />
-        <Button variant="danger">Delete</Button>
+        <Button onClick={props.handleDelete} variant="danger">
+          Delete
+        </Button>
       </div>
     </div>
   );

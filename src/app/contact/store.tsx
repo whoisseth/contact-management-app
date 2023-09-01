@@ -5,7 +5,7 @@ import { atom } from "jotai";
 export interface Contact {
   firstName: string;
   lastName: string;
-  status: "active" | "inactive";
+  status: string;
 }
 
 const sampleData: Contact[] = [

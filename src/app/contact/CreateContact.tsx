@@ -1,24 +1,49 @@
 /** @format */
 
 "use client";
-import Button from "@/components/Button";
+
 import { CreateAndEditModal } from "@/components/CreateAndEditModal";
-import { Modal } from "@/components/Modal";
+import { useAtom } from "jotai";
 import { useState } from "react";
+import { contactAtom } from "./store";
 
 export function CreateContact_Modal({ className }: { className?: string }) {
-  const [showModal, setShowModal] = useState(false);
-  const closeModal = () => {
-    setShowModal(false);
-  };
-  const openModal = () => {
-    setShowModal(true);
-  };
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [status, setStatus] = useState<string>("");
+
+  const [contacts, setContacts] = useAtom(contactAtom);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log("submit btn cliecked");
+
+    setFirstName("");
+    setLastName("");
+    setStatus("");
+
+    if (
+      contacts.some(
+        (contact) =>
+          contact.firstName === firstName && contact.lastName === lastName
+      )
+    ) {
+      return alert("Contact already exists");
+    } else {
+      setContacts([...contacts, { firstName, lastName, status }]);
+    }
   }
 
-  return <CreateAndEditModal className={className} title="Create Contact" />;
+  return (
+    <CreateAndEditModal
+      onChangeFirstName={(e) => setFirstName(e.target.value)}
+      onChangeLastName={(e) => setLastName(e.target.value)}
+      onChangeStatus={(e) => setStatus(e.target.value)}
+      first_NameValue={firstName}
+      last_NameValue={lastName}
+      statusValue={status}
+      onSubmit={handleSubmit}
+      className={className}
+      title="Create Contact"
+    />
+  );
 }

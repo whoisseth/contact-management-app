@@ -10,10 +10,15 @@ import { BiErrorCircle } from "react-icons/bi";
 import { CreateContact_Modal } from "./CreateContact";
 import ContactCard from "@/components/ContactCard";
 import { useAtom } from "jotai";
-import { contactAtom } from "./store";
+import { Contact, contactAtom } from "./store";
 
 export default function ContactPage() {
   const [contacts, setContacts] = useAtom(contactAtom);
+
+  function handleDelete(contact: Contact) {
+    const newContacts = contacts.filter((data) => data !== contact);
+    setContacts(newContacts);
+  }
 
   return (
     <Layout heading="Contact">
@@ -24,6 +29,7 @@ export default function ContactPage() {
           <>
             {contacts.map((contact, index) => (
               <ContactCard
+                handleDelete={() => handleDelete(contact)}
                 firstName={contact.firstName}
                 lastName={contact.lastName}
                 status={contact.status}

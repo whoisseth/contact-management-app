@@ -16,7 +16,7 @@ export default function Header(props: Props) {
         onClick={() => setSidebar(!isSidebarOpen)}
         className=" text-2xl ml-4 cursor-pointer hidden sm:flex"
       />
-      <div className=" flex h-full w-full  justify-center items-center text-xl font-semibold ">
+      <div className=" flex h-full w-full   pl-8 items-center text-xl font-semibold ">
         {props.heading}
       </div>
     </section>

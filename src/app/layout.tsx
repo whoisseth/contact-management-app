@@ -1,8 +1,10 @@
 /** @format */
-
+'use client'
 import "./globals.css";
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,15 +19,19 @@ export default function RootLayout({
   children: React.ReactNode;
   header: string;
 }) {
+  const queryClient = new QueryClient();
+
   return (
-    <html lang="en">
-      <body
-        className={
-          process.env.NODE_ENV === "development" ? "debug-screens" : ""
-        }
-      >
-        {children}
-      </body>
-    </html>
+    <QueryClientProvider client={queryClient}>
+      <html lang="en">
+        <body
+          className={
+            process.env.NODE_ENV === "development" ? "debug-screens" : ""
+          }
+        >
+          {children}
+        </body>
+      </html>
+    </QueryClientProvider>
   );
 }

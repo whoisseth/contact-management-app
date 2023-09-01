@@ -13,21 +13,6 @@ const sampleData: Contact[] = [
     firstName: "utkarsh",
     lastName: "seth",
     status: "active"
-  },
-  {
-    firstName: "utkarsh",
-    lastName: "seth",
-    status: "inactive"
-  },
-  {
-    firstName: "utkarsh",
-    lastName: "seth",
-    status: "active"
-  },
-  {
-    firstName: "utkarsh",
-    lastName: "seth",
-    status: "inactive"
   }
 ];
 

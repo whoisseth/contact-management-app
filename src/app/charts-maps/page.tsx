@@ -4,6 +4,7 @@
 import Layout from "@/components/Layout";
 import { LineChart } from "./LineChart";
 import { useQuery } from "react-query";
+import Map from "./Map";
 
 export default function ChartsAndMaps() {
   const { isLoading, error, data } = useQuery("", () =>
@@ -20,6 +21,7 @@ export default function ChartsAndMaps() {
   return (
     <Layout heading="Charts and Maps">
       <LineChart data={data} />
+      <Map />
     </Layout>
   );
 }

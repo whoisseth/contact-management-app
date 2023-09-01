@@ -48,9 +48,6 @@ export function LineChart({ data }) {
 
   return (
     <div className="App">
-      <h2 className="text-4xl font-bold text-center mt-10 mb-5 text-gray-700 dark:text-gray-200  p-2 rounded-md bg-gray-100 dark:bg-gray-900 dark:border-gray-700 border-2 border-gray-300">
-        World wide data of cases
-      </h2>
       <HighchartsReact highcharts={Highcharts} options={options} />
     </div>
   );

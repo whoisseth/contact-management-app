@@ -1,18 +1,4 @@
-/**
- * @format
- * @type {import('next').NextConfig}
- */
+/** @type {import('next').NextConfig} */
+const nextConfig = {}
 
-const nextConfig = {
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "disease.sh",
-       
-      }
-    ]
-  }
-};
-
-module.exports = nextConfig;
+module.exports = nextConfig
